@@ -25,7 +25,7 @@ def buscarPersona(nif):
     for persona in numeroNif:
         if persona[0]==nif:
             encontrado=True
-            print("Información de la persona:")
+            print("Informacion de la persona:")
             print("NIF:", persona[0])
             print("Nombre:", persona[1])
             print("Edad:", persona[2])
