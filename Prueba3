@@ -1,0 +1,85 @@
+import os
+os.system("cls")
+
+#Funcion para guardar informacion
+numeroNif=[]
+def guardarInfo():
+    nif=input("Ingrese el numero NIF: ")
+    nombre=input("Ingrese el nombre: ")
+    while len(nombre)<=8:
+        print("El nombre no puede superar los 8 caracteres.")
+        nombre=input("Ingrese el nombre: ")
+    edad=int(input("Ingrese la edad: "))
+    while edad<10:
+        print("La edad debe ser mayor o igual a 10.")
+        edad=int(input("Ingrese la edad: "))
+
+    informacion = [nif, nombre, edad]
+    numeroNif.append(informacion)  
+    print("Informacion guardada con exito")
+    print(informacion)
+
+#Funcion para buscar a la persona
+def buscarPersona(nif):
+    encontrado=False
+    for persona in numeroNif:
+        if persona[0]==nif:
+            encontrado=True
+            print("Información de la persona:")
+            print("NIF:", persona[0])
+            print("Nombre:", persona[1])
+            print("Edad:", persona[2])
+    if not encontrado:
+        print("No se encontro el NIF solicitado")
+
+#Funcion para imprimir certificados
+def imprimirCertificados():
+    fechaNacmiento=input("Ingrese su fecha de nacimiento: ")
+    estadoConyugal=input("Ingrese su estado conyugal: ")
+    print("******* Certificados *******")
+    for persona in numeroNif:
+        nif = persona[0]
+        nombre = persona[1]
+        edad = persona[2]
+        
+        # Certificado de Nacimiento
+        print("Certificado de Nacimiento")
+        print("NIF:", nif)
+        print("Nombre:", nombre)
+        print("Edad:", edad)
+        print("Fecha de Nacimiento:",fechaNacmiento)
+
+        # Certificado de Estado Conyugal
+        print("Certificado de Estado Conyugal")
+        print("NIF:", nif)
+        print("Nombre:", nombre)
+        print("Edad:", edad)
+        print("Estado Conyugal:",estadoConyugal)
+        print()
+
+while True:
+    print("*******Union europea de España (Andalucia)*******")
+    print("1.- Grabar")
+    print("2.- Buscar")
+    print("3.- Imprimir certificados")
+    print("4.- Salir")
+    op = int(input("Ingrese una opcion del 1 al 4: "))
+
+    try:
+        if op>=1 and op<=4:
+            if op==1:
+                guardarInfo()
+            elif op==2:
+                buscarNIF=input("Ingrese el NIF a buscar: ")
+                buscarPersona(buscarNIF)
+            elif op==3:
+                imprimirCertificados()
+            elif op==4:
+                print("Muchas gracias por usar el software, Camilo Chàvez, V1.0")
+                break
+        else:
+            print("Ingrese una opcion valida")
+    except:
+        print("Ingrese una opcion valida")
+
+print("Gracias por preferirnos")
